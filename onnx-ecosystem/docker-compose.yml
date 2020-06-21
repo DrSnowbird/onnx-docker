@@ -1,0 +1,47 @@
+version: '3.1' 
+
+services:
+  onnx-ecosystem:
+    container_name: onnx-ecosystem
+    image: openkbs/onnx-ecosystem
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - ./.env
+    environment:
+      - USER_ID=${USER_ID:-1000}
+      - GROUP_ID=${GROUP_ID:-1000}
+      # - APP_HOME=${APP_HOME:-/home/developer/app}
+      # - APP_MAIN=${APP_MAIN:-setup.sh}
+      - DOCKER_HOST_IP=${DOCKER_HOST_IP:-192.168.0.160}
+      - DOCKER_HOST_NAME=${DOCKER_HOST_NAME:-solar01}
+      - DISPLAY=$DISPLAY
+      - 'DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket'
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /run/dbus:/host/run/dbus
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      # - ./certificates:/app/certificates
+      - ./app:/home/developer/app
+      - ./workspace:/home/developer/workspace
+      - ./data:/home/developer/data
+ 
+    ## -------------------------------
+    ## -- Change to your specific port
+    ## -------------------------------
+    ports:
+      - "8888:8888"
+
+    ## -----------------------------
+    ## -- Network setup if needed --
+    ## -----------------------------
+    # networks:
+    #  - dev_network
+
+#networks:
+#  dev_network:
+#    external:
+#      name: dev_network
+
+

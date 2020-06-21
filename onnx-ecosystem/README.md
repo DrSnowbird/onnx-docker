@@ -1,12 +1,12 @@
 # ONNX Converter Ecosystem Docker Container
 
-## About
+# About
 
 This tool enables new users to quickly get started working with model conversions and inference in the ONNX model format.
 
 By following the steps below, you will launch a pre-configured Jupyter Notebook environment and explore starter scripts for model conversion from various machine learning frameworks to the ONNX format, using [ONNX Runtime](https://aka.ms/onnxruntime) for inference.
 
-## Supported Framework -> ONNX conversions
+# Supported Framework -> ONNX conversions
 - CoreML
 - Keras
 - SciKit-Learn
@@ -19,7 +19,34 @@ By following the steps below, you will launch a pre-configured Jupyter Notebook 
 - XGBoost (preview)
 - LibSVM (preview)
 
-## Usage
+# Build
+```
+make build
+```
+
+# Run
+```
+make up
+```
+
+# Mapping Local Notebooks into Container
+There are three folder being auto-mapped (see .env / .env.template):
+1. ./app
+2. ./data
+3. ./workspace
+
+You decide how your want to best use the above mapped folders in the Containers while mapping to Host's current project (this) directory's, respectively, ./app, ./data, and ./workspace
+
+# Use
+1. Run `./logs.sh` in a separate terminal session to get the container name and verify your container is successfully running.
+
+2. Search / Navigate to the url that the Jupyter Notebook is running on and use the provided token in the console.
+    - Should be in the form: `http://127.0.0.1:8888/?token=RANDOMSTRINGHERE`  
+```
+http://127.0.0.1:8888/?token=RANDOMSTRINGHERE
+```
+
+# Usage (inherited from upstream!)
 
 0. Ensure that you have Docker installed, or are using Docker for Linux containers if on Windows.
 
