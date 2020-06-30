@@ -4,6 +4,7 @@ services:
   onnx-ecosystem:
     container_name: onnx-ecosystem
     image: openkbs/onnx-ecosystem
+    restart: always
     build:
       context: .
       dockerfile: Dockerfile
