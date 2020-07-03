@@ -19,6 +19,8 @@ By following the steps below, you will launch a pre-configured Jupyter Notebook 
 - XGBoost (preview)
 - LibSVM (preview)
 
+# Note that this GIT use openkbs/jdk-mvn-py3 as base image to use Non-Root users setup
+
 # Build
 ```
 make build

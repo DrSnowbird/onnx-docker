@@ -1,14 +1,17 @@
-FROM ubuntu:18.04
-MAINTAINER Vinitra Swamy "viswamy@microsoft.com"
+FROM openkbs/jdk-mvn-py3
+
+MAINTAINER DrSnowbird "DrSnowbird@openkbs.org"
+
 ARG DEBIAN_FRONTEND=noninteractive
-RUN apt-get update && \
-	apt-get install -y sudo \
-	build-essential curl \
+RUN sudo apt-get update && \
+	sudo apt-get install -y build-essential\
 	libcurl4-openssl-dev \
-	libssl-dev wget \
-	python3-pip \
+	libssl-dev \
 	git && \
 	pip3 install --upgrade pip
+
+WORKDIR ${HOME}
+USER ${USER}
 
 RUN mkdir scripts && \
 		cd scripts && \
@@ -21,7 +24,7 @@ COPY requirements.txt requirements.txt
 # Install Python Requirements
 RUN pip3 install -r requirements.txt
 
-WORKDIR /scripts
+WORKDIR scripts
 
 EXPOSE 8888
 
