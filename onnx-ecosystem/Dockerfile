@@ -13,18 +13,19 @@ RUN sudo apt-get update && \
 WORKDIR ${HOME}
 USER ${USER}
 
-RUN mkdir scripts && \
-		cd scripts && \
-		mkdir converter_scripts && \
-		mkdir inference_demos
-COPY converter_scripts/ scripts/converter_scripts/
-COPY inference_demos/ scripts/inference_demos/
+RUN mkdir -p converter_scripts inference_demos
+
+COPY converter_scripts/ converter_scripts/
+COPY inference_demos/ inference_demos/
+
 COPY requirements.txt requirements.txt
+
+RUN sudo chown -R $USER:$USER converter_scripts inference_demos requirements.txt
 
 # Install Python Requirements
 RUN pip3 install -r requirements.txt
 
-WORKDIR scripts
+WORKDIR ${HOME}
 
 EXPOSE 8888
 
