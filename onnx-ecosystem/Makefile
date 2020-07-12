@@ -14,6 +14,9 @@ ORGANIZATION=$(shell echo $${ORGANIZATION:-openkbs})
 PROJECT=$(shell echo $${PROJECT:-dev})
 APPLICATION_NAME=$(shell echo $${PWD\#\#*/})
 
+# Home's User's Folders to be mapped to Container
+DATA_DOCKER_DIR=${HOME}/data-docker/$(APPLICATION_NAME)
+
 APP_VERSION=$(shell echo $${APP_VERSION:-latest})
 # APP_VERSION=$(shell echo $${APP_VERSION:-1.0.0})
 
@@ -78,7 +81,14 @@ up-it:
 	sudo docker-compose down
 
 up: build
+	echo $(DATA_DOCKER_DIR)
+	@if [ ! -s "$(DATA_DOCKER_DIR)" ]; then \
+		mkdir -p $(DATA_DOCKER_DIR); \
+	else \
+		ls -al $(DATA_DOCKER_DIR); \
+	fi
 	sudo docker-compose up -d
+	./get-token.sh
 
 down:
 	sudo docker-compose down

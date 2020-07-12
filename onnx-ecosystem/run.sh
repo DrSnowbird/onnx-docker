@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 
 set +e
 
@@ -23,7 +23,7 @@ fi
 ##    1: X11/Desktip container build image type
 ##    2: VNC/noVNC container build image type
 ## ------------------------------------------------------------------------
-BUILD_TYPE=1
+BUILD_TYPE=0
 
 ## ------------------------------------------------------------------------
 ## Valid "RUN_TYPE" values: 
@@ -751,3 +751,5 @@ case "${BUILD_TYPE}" in
 esac
 
 
+#### ---- Customized Extension ---- ####
+sudo docker logs ${instanceName} 2>&1 | grep token

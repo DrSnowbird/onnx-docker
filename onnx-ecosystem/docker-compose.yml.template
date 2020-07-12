@@ -10,6 +10,7 @@ services:
     env_file:
       - ./.env
     environment:
+      - CONTAINER_NAME: {{CONTAINER_NAME}}
       - USER_ID=${USER_ID:-1000}
       - GROUP_ID=${GROUP_ID:-1000}
       # - APP_HOME=${APP_HOME:-/home/developer/app}
@@ -23,9 +24,15 @@ services:
       - /run/dbus:/host/run/dbus
       - /tmp/.X11-unix:/tmp/.X11-unix
       # - ./certificates:/app/certificates
-      - ./app:/home/developer/app
-      - ./workspace:/home/developer/workspace
-      - ./data:/home/developer/data
+      ## -- Use current directory as root for mapping Volumes: --
+      #- ./app:/home/developer/app
+      #- ./workspace:/home/developer/workspace
+      #- ./data:/home/developer/data
+      ## -- Use $HOME/data-docker/ directory as root for mapping Volumes: --
+      - $HOME/data-docker/${CONTAINER_NAME}/app:/home/developer/app
+      - $HOME/data-docker/${CONTAINER_NAME}/workspace:/home/developer/workspace
+      - $HOME/data-docker/${CONTAINER_NAME}/data:/home/developer/data
+ 
  
     ## -------------------------------
     ## -- Change to your specific port
