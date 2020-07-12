@@ -88,6 +88,7 @@ up: build
 		ls -al $(DATA_DOCKER_DIR); \
 	fi
 	sudo docker-compose up -d
+	sleep 4
 	./get-token.sh
 
 down:

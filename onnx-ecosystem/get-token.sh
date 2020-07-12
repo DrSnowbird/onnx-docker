@@ -19,3 +19,6 @@ instanceName=`echo $(basename ${imageTag})|tr '[:upper:]' '[:lower:]'|tr "/: " "
 
 #### ---- Customized Extension ---- ####
 sudo docker logs ${instanceName} 2>&1 | grep token
+
+echo
+echo ">>> TOKEN=$(sudo docker logs onnx-ecosystem 2>&1 | grep "?token=" |cut -d'=' -f2|sort -u)"
