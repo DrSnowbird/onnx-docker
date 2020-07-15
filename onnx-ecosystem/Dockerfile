@@ -10,6 +10,8 @@ RUN sudo apt-get update && \
 	git && \
 	pip3 install --upgrade pip
 
+RUN sudo apt-get install -y graphviz
+
 WORKDIR ${HOME}
 USER ${USER}
 

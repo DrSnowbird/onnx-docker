@@ -37,3 +37,6 @@ mxnet==1.6.0
 onnx
 onnxmltools
 onnxruntime
+
+# Dot/Graphviz
+graphviz

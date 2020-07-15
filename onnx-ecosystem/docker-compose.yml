@@ -32,8 +32,7 @@ services:
       - ${HOME}/data-docker/${CONTAINER_NAME}/app:/home/developer/app
       - ${HOME}/data-docker/${CONTAINER_NAME}/workspace:/home/developer/workspace
       - ${HOME}/data-docker/${CONTAINER_NAME}/data:/home/developer/data
- 
- 
+    restart: always
     ## -------------------------------
     ## -- Change to your specific port
     ## -------------------------------
