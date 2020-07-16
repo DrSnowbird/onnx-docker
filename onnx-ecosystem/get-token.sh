@@ -18,7 +18,7 @@ PACKAGE="${imageTag##*/}"
 instanceName=`echo $(basename ${imageTag})|tr '[:upper:]' '[:lower:]'|tr "/: " "_"`
 
 #### ---- Customized Extension ---- ####
-sudo docker logs ${instanceName} 2>&1 | grep token
+#sudo docker logs ${instanceName} 2>&1 | grep token
 
 echo
-echo ">>> TOKEN=$(sudo docker logs onnx-ecosystem 2>&1 | grep "?token=" |cut -d'=' -f2|sort -u)"
+echo ">>> TOKEN=$(sudo docker logs onnx-ecosystem 2>&1 | grep "?token=" |cut -d'=' -f2| tail -n1)"
