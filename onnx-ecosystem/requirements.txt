@@ -1,38 +1,38 @@
-numpy==1.16.6
-jupyter==1.0.0
-six==1.11.0
-opencv-python==3.2.0.6
-matplotlib>=2.1.2
-pandas==0.24.0
-pillow==7.0.0
-scipy>=1.0.1
-setuptools==41.0.0
+numpy
+jupyter
+six
+opencv-python
+matplotlib
+pandas
+pillow
+scipy
+setuptools
 
-coremltools==2.1
+coremltools
 
-tensorflow==1.15.2
-keras==2.1.6
+tensorflow
+keras
 keras2onnx
 
-scikit-learn==0.20.0
+scikit-learn
 skl2onnx
 
 tf2onnx
 
-torchvision==0.2.1
-torch==1.0.1
+torchvision
+torch
 
-xgboost==0.81
+xgboost
 
-svm==0.1.0
+svm
 
-glibc==0.6.1
-lightgbm==2.2.3
+glibc
+lightgbm
 
-cntk==2.6
+# cntk
 
-h5py==2.8.0
-mxnet==1.6.0
+h5py
+mxnet
 
 onnx
 onnxmltools
